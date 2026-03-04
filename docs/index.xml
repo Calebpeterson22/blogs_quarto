@@ -10,28 +10,72 @@
 <atom:link href="https://your-website-url.example.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.9.22</generator>
-<lastBuildDate>Wed, 18 Feb 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 04 Mar 2026 07:00:00 GMT</lastBuildDate>
 <item>
-  <title>Post With Code</title>
-  <dc:creator>Harlow Malloc</dc:creator>
-  <link>https://your-website-url.example.com/posts/post-with-code/</link>
+  <title>Hockey Cleansing</title>
+  <dc:creator>Caleb Peterson</dc:creator>
+  <link>https://your-website-url.example.com/posts/Hockey Cleansing/</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p>This is a post with executable code.</p>
+<section id="collecting-and-cleansing-data" class="level1">
+<h1>Collecting and Cleansing Data</h1>
+<p>For my project, I am taking data from two sources to create a dashboard that gives insights into the effect of NHL fights. My goals for this project is to have a portion showing the most influential fights in the NHL.</p>
+<p>Currently, most of my time has been dedicated to pulling the data together. So far the datasources I have pulled have been coming from two sources. The first, is the SportsRadar NHL API. Using the API, I was able to take game ID’s for the every game of the 2025-2026 NHL season up until the olympic break. Using those ID’s, I placed them in a list, and then called the play-by-play data for each game, compiling it into a single dataframe. This was the largest piece of the data collection and the most important because the play by play data is the only place to find where fights happened. Other pieces from the API include player and team data, which I will use to pull in player and team stats to add to the dashboard.</p>
+<p>The second source I am using was gathered by some webscraping of the website hockeyfights.com. This website has a comprehensive list of every fight in the NHL, and I was able to pull the data for every fight, along with public poles of who the fans think won the fight.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Hockey Cleansing/Hockey Fights Website.png" class="img-fluid figure-img"></p>
+<figcaption>hockeyfights.com</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Hockey Cleansing/Webscraped Data.png" class="img-fluid figure-img"></p>
+<figcaption>Webscraped Data</figcaption>
+</figure>
+</div>
+<p>Now that I have majority of the data I will need, I have been in the process of cleansing and compiling all the data together. I have made a few seperate dataframes for different visualizations that will be included in the dashboard.</p>
+</section>
+<section id="visualization" class="level1">
+<h1>Visualization</h1>
+<p>The first visualization I am made is to look at the chronological progression of each fight and the influence it has on the game.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Hockey Cleansing/MINvsNAS grapg.png" class="img-fluid figure-img"></p>
+<figcaption>Minnesota vs Nashville</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Hockey Cleansing/TBLvsFL graph.png" class="img-fluid figure-img"></p>
+<figcaption>Tampa Bay vs Florida</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Now that I have the chart working, all that has to happen to change the teams is change the filters for the dataframe to search by home, away, and date. I am hoping to add a dropdown menu to the dashboard that will allow users to select the teams and date of the fight they want to see, and this will auto update the graph.</p>
+<p>The dates have been a bit of a struggle to wrangle, and so has been the process of picking out who is the home team fighter and away team fighter. This will be important when looking at the influence of the fight as well as looking at who is the most successful fighter. Once this is taken care of, I will be making a data frame that will count the number of goals scored before the fight, and the number of goals scored after the fight, and then calculating the difference to see if there was a positive or negative influence on the game. Using this method I will be able to rank the top most influential fights in the NHL, and then use that to create a leaderboard of the most influential fighters in the NHL.</p>
+<p>Some other charts I have been able messing around with is a fight heat map to see where fights occur most frequently. That turned out to not have much correlation, but its a neat looking chart.</p>
+<p><img src="https://your-website-url.example.com/posts/Hockey Cleansing/Hockey Fights Plot.png" class="img-fluid"></p>
 
 
+</section>
 
  ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://your-website-url.example.com/posts/post-with-code/</guid>
-  <pubDate>Wed, 18 Feb 2026 07:00:00 GMT</pubDate>
-  <media:content url="https://your-website-url.example.com/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
+  <category>Hockey analysis</category>
+  <guid>https://your-website-url.example.com/posts/Hockey Cleansing/</guid>
+  <pubDate>Wed, 04 Mar 2026 07:00:00 GMT</pubDate>
+  <media:content url="https://your-website-url.example.com/posts/Hockey Cleansing/USAvsCANADA.avif" medium="image" type="image/avif"/>
 </item>
 <item>
   <title>Test Marimo Post</title>
@@ -54,7 +98,7 @@
 </marimo-island>
 <marimo-island data-app-id="main" data-cell-id="MJUe" data-reactive="true">
     <marimo-cell-output>
-    <marimo-ui-element object-id="MJUe-0" random-id="7a67d751-ab08-233e-27d6-1491a25adb98"><marimo-slider data-initial-value="1" data-label="null" data-start="1" data-stop="10" data-steps="[]" data-debounce="false" data-disabled="false" data-orientation="&quot;horizontal&quot;" data-show-value="false" data-include-input="false" data-full-width="false"></marimo-slider></marimo-ui-element>
+    <marimo-ui-element object-id="MJUe-0" random-id="3d5e494e-27b8-0333-fb72-a4d400dbe172"><marimo-slider data-initial-value="1" data-label="null" data-start="1" data-stop="10" data-steps="[]" data-debounce="false" data-disabled="false" data-orientation="&quot;horizontal&quot;" data-show-value="false" data-include-input="false" data-full-width="false"></marimo-slider></marimo-ui-element>
     </marimo-cell-output>
     <marimo-cell-code hidden="">slider%20%3D%20mo.ui.slider(start%3D1%2C%20stop%3D10)%0Aslider</marimo-cell-code>
 </marimo-island>
@@ -89,7 +133,7 @@ font-style: inherit;">"info"</span>)</span></code></pre></div></div>
     <marimo-cell-output>
     <marimo-callout-output data-html="&quot;<span class=\&quot;markdown prose dark:prose-invert contents\&quot;><h1 id=\&quot;hello-from-marimo\&quot;>Hello from marimo!!</h1>\n<span class=\&quot;paragraph\&quot;>This is a raw, reactive python cell.\nYou can edit it, and the output will change on run.</span></span>&quot;" data-kind="&quot;info&quot;"></marimo-callout-output>
     </marimo-cell-output>
-    <marimo-ui-element object-id="8e4cfd9e-4719-b41f-d33c-4b27b03f11a6" random-id="8e4cfd9e-4719-b41f-d33c-4b27b03f11a6"><marimo-code-editor data-initial-value="&quot;mo.md(f'''\n  # Hello from marimo!{'!' * slider.value}\n  This is a raw, reactive python cell.\n  You can edit it, and the output will change on run.\n''').callout(\&quot;info\&quot;)&quot;" data-label="null" data-language="&quot;python&quot;" data-placeholder="&quot;&quot;" data-disabled="false" data-show-copy-button="true" data-debounce="false"></marimo-code-editor></marimo-ui-element>
+    <marimo-ui-element object-id="c9306948-e36c-442c-1019-020de64a3da8" random-id="c9306948-e36c-442c-1019-020de64a3da8"><marimo-code-editor data-initial-value="&quot;mo.md(f'''\n  # Hello from marimo!{'!' * slider.value}\n  This is a raw, reactive python cell.\n  You can edit it, and the output will change on run.\n''').callout(\&quot;info\&quot;)&quot;" data-label="null" data-language="&quot;python&quot;" data-placeholder="&quot;&quot;" data-disabled="false" data-show-copy-button="true" data-debounce="false"></marimo-code-editor></marimo-ui-element>
 </marimo-island>
 
 

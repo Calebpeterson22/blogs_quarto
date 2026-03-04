@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Harlow Malloc">
-<meta name="dcterms.date" content="2026-02-18">
+<meta name="author" content="Caleb Peterson">
+<meta name="dcterms.date" content="2026-03-04">
 
 <title>Post With Code – NHL Fight Blog</title>
 <style>
@@ -122,9 +122,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="quarto-title column-body">
       <h1 class="title">Post With Code</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">news</div>
-                <div class="quarto-category">code</div>
-                <div class="quarto-category">analysis</div>
+                <div class="quarto-category">Hockey analysis</div>
               </div>
                   </div>
   </div>
@@ -135,14 +133,14 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Harlow Malloc </p>
+               <p>Caleb Peterson </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 18, 2026</p>
+        <p class="date">March 4, 2026</p>
       </div>
     </div>
     
@@ -161,9 +159,41 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This is a post with executable code.</p>
+<section id="collecting-and-cleansing-data" class="level1">
+<h1>Collecting and Cleansing Data</h1>
+<p>For my project, I am taking data from two sources to create a dashboard that gives insights into the effect of NHL fights. My goals for this project is to have a portion showing the most influential fights in the NHL.</p>
+<p>Currently, most of my time has been dedicated to pulling the data together. So far the datasources I have pulled have been coming from two sources. The first, is the SportsRadar NHL API. Using the API, I was able to take game ID’s for the every game of the 2025-2026 NHL season up until the olympic break. Using those ID’s, I placed them in a list, and then called the play-by-play data for each game, compiling it into a single dataframe. This was the largest piece of the data collection and the most important because the play by play data is the only place to find where fights happened. Other pieces from the API include player and team data, which I will use to pull in player and team stats to add to the dashboard.</p>
+<p>The second source I am using was gathered by some webscraping of the website hockeyfights.com. This website has a comprehensive list of every fight in the NHL, and I was able to pull the data for every fight, along with public poles of who the fans think won the fight.</p>
+<p>Now that I have majority of the data I will need, I have been in the process of cleansing and compiling all the data together. I have made a few seperate dataframes for different visualizations that will be included in the dashboard.</p>
+<p>#Visualization 1</p>
+<p>The first visualization I am made is to look at the chronological progression of each fight and the influence it has on the game.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MINvsNAS grapg.png" class="img-fluid figure-img"></p>
+<figcaption>Minnesota vs Nashville</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="TBLvsFL graph.png" class="img-fluid figure-img"></p>
+<figcaption>Tampa Bay vs Florida</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Now that I have the chart working, all that has to happen to change the teams is change the filters for the dataframe to search by home, away, and date. I am hoping to add a dropdown menu to the dashboard that will allow users to select the teams and date of the fight they want to see, and this will auto update the graph.</p>
+<p>The dates have been a bit of a struggle to wrangle, and so has been the process of picking out who is the home team fighter and away team fighter. This will be important when looking at the influence of the fight as well as looking at who is the most successful fighter. Once this is taken care of, I will be making a data frame that will count the number of goals scored before the fight, and the number of goals scored after the fight, and then calculating the difference to see if there was a positive or negative influence on the game. Using this method I will be able to rank the top most influential fights in the NHL, and then use that to create a leaderboard of the most influential fighters in the NHL.</p>
+<p>Some other charts I have been able messing around with is a fight heat map to see where fights occur most frequently. That turned out to not have much correlation, but its a neat looking chart.</p>
+<p><img src="Hockey Fights Plot.png" class="img-fluid"></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
