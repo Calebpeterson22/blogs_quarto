@@ -78,6 +78,46 @@
   <media:content url="https://your-website-url.example.com/posts/Hockey Cleansing/USAvsCANADA.avif" medium="image" type="image/avif"/>
 </item>
 <item>
+  <title>The Hockey Analytics Dashboard</title>
+  <dc:creator>Caleb Peterson</dc:creator>
+  <link>https://your-website-url.example.com/posts/Dashboard_creation/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This semester, I set out with the goal of looking into the effect of fights on a game in the National Hockey League. ALong with this deep dive, I wanted to create an interesting interactive dashboard that would allow users to explore fights that have happened throughout the NHL season. The time has finally come, and the dashboard is finished. The following will be a walk through of all the features included in the dashboard.</p>
+<section id="fight-explorer-page" class="level2">
+<h2 class="anchored" data-anchor-id="fight-explorer-page">Fight Explorer Page</h2>
+<p>The front page of the dashboard is the fight explorer page. This page allows users to select a fight that happened in the NHL season, and then see the influence of that fight on the game.</p>
+<p>!(Dashboard_Front.png)</p>
+<p>On the front page, you have 3 options of selecting a fight. The first options, is you can select one of the top 5 most influential fights of the season. The influence level is determined by a variable called <code>goals_delta</code> which looks at the goals scored within 10 minutes before the fight, and then looks at the goals scored within 10 minutes after the fight, and then calculates the difference. If there were more goals scored after the fight, then the influence level is positive, and if there were more goals scored before the fight, then the influence level is negative. The second option is the random button, which upon pressing will load a random fight from the season. Last, if there is a specific fight you have in mind, or want to filter by team, there are drop down filters you may choose from.</p>
+<p>Now, what will you see when you select a fight? The main feature of the fight explorer page is the influence graph. This graph shows the progression of the game, and how the fight influenced the game. The graph shows the full timeline of goals scored in the game. The vertical red line represents the time of the fight. You will also get player profiles for the two players, as well as a declared winner of the fight, a map of where the fight took place, and a video if you want to watch the fight.</p>
+<p>!(dashboard.png)</p>
+</section>
+<section id="fight-statistics-page" class="level2">
+<h2 class="anchored" data-anchor-id="fight-statistics-page">Fight Statistics Page</h2>
+<p>This page is a more traditional statistics page, looking at fights across the league as a whole, and taking a look and some individual players and positions in fights. We can see charts such as most fight prone teams, top fighters by win percentage, when fights happen most often, and a “bruiser” for each NHL team.</p>
+<p>!(fight stats.png)</p>
+</section>
+<section id="most-dominant-fights-page" class="level2">
+<h2 class="anchored" data-anchor-id="most-dominant-fights-page">Most Dominant Fights Page</h2>
+<p>The final page of dashboard is a leaderboard of the most dominantly won fights of the season. The website that I scraped the fight winner data from had a public poll for who the fans thought won the fight, and I used that data to calculate a win percentage for each fighter. This page looks at the fighters with the highest win percentage, and then shows some information about those fights, such as the teams involved, the date of the fight. Most importantly, it provided a video of the fight, so you can quickly watch the 20 most dominantly won fights of the season.</p>
+<p>!(Dominant Fights.png)</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>That is the dashboard! I am really happy with how it turned out, and I think it is a really interesting way to explore the effect of fights on NHL games. There are some things I would like to add in the future, such as a page looking at the most influential fights of all time, not just this season. Overall, I had a lot of fun working on this project, and I hope you enjoy exploring the dashboard as much as I enjoyed creating it!</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/Dashboard_creation/</guid>
+  <pubDate>Wed, 18 Feb 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Test Marimo Post</title>
   <dc:creator>J. Hathaway</dc:creator>
   <link>https://your-website-url.example.com/posts/test_post/</link>
@@ -98,7 +138,7 @@
 </marimo-island>
 <marimo-island data-app-id="main" data-cell-id="MJUe" data-reactive="true">
     <marimo-cell-output>
-    <marimo-ui-element object-id="MJUe-0" random-id="3d5e494e-27b8-0333-fb72-a4d400dbe172"><marimo-slider data-initial-value="1" data-label="null" data-start="1" data-stop="10" data-steps="[]" data-debounce="false" data-disabled="false" data-orientation="&quot;horizontal&quot;" data-show-value="false" data-include-input="false" data-full-width="false"></marimo-slider></marimo-ui-element>
+    <marimo-ui-element object-id="MJUe-0" random-id="cc0f11ea-acb7-e8b2-b09f-2a661eed12fa"><marimo-slider data-initial-value="1" data-label="null" data-start="1" data-stop="10" data-steps="[]" data-debounce="false" data-disabled="false" data-orientation="&quot;horizontal&quot;" data-show-value="false" data-include-input="false" data-full-width="false"></marimo-slider></marimo-ui-element>
     </marimo-cell-output>
     <marimo-cell-code hidden="">slider%20%3D%20mo.ui.slider(start%3D1%2C%20stop%3D10)%0Aslider</marimo-cell-code>
 </marimo-island>
@@ -133,7 +173,7 @@ font-style: inherit;">"info"</span>)</span></code></pre></div></div>
     <marimo-cell-output>
     <marimo-callout-output data-html="&quot;<span class=\&quot;markdown prose dark:prose-invert contents\&quot;><h1 id=\&quot;hello-from-marimo\&quot;>Hello from marimo!!</h1>\n<span class=\&quot;paragraph\&quot;>This is a raw, reactive python cell.\nYou can edit it, and the output will change on run.</span></span>&quot;" data-kind="&quot;info&quot;"></marimo-callout-output>
     </marimo-cell-output>
-    <marimo-ui-element object-id="c9306948-e36c-442c-1019-020de64a3da8" random-id="c9306948-e36c-442c-1019-020de64a3da8"><marimo-code-editor data-initial-value="&quot;mo.md(f'''\n  # Hello from marimo!{'!' * slider.value}\n  This is a raw, reactive python cell.\n  You can edit it, and the output will change on run.\n''').callout(\&quot;info\&quot;)&quot;" data-label="null" data-language="&quot;python&quot;" data-placeholder="&quot;&quot;" data-disabled="false" data-show-copy-button="true" data-debounce="false"></marimo-code-editor></marimo-ui-element>
+    <marimo-ui-element object-id="29fa4c3f-97f5-9cba-25fc-9c3dd5b7a7e8" random-id="29fa4c3f-97f5-9cba-25fc-9c3dd5b7a7e8"><marimo-code-editor data-initial-value="&quot;mo.md(f'''\n  # Hello from marimo!{'!' * slider.value}\n  This is a raw, reactive python cell.\n  You can edit it, and the output will change on run.\n''').callout(\&quot;info\&quot;)&quot;" data-label="null" data-language="&quot;python&quot;" data-placeholder="&quot;&quot;" data-disabled="false" data-show-copy-button="true" data-debounce="false"></marimo-code-editor></marimo-ui-element>
 </marimo-island>
 
 

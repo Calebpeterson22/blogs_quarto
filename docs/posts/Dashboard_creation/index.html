@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Caleb Peterson">
-<meta name="dcterms.date" content="2026-03-04">
+<meta name="dcterms.date" content="2026-02-18">
 
-<title>Post With Code – NHL Fight Blog</title>
+<title>The Hockey Analytics Dashboard – NHL Fight Blog</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -120,11 +120,8 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Post With Code</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">Hockey analysis</div>
-              </div>
-                  </div>
+      <h1 class="title">The Hockey Analytics Dashboard</h1>
+                      </div>
   </div>
     
   
@@ -140,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 4, 2026</p>
+        <p class="date">February 18, 2026</p>
       </div>
     </div>
     
@@ -159,38 +156,28 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="collecting-and-cleansing-data" class="level1">
-<h1>Collecting and Cleansing Data</h1>
-<p>For my project, I am taking data from two sources to create a dashboard that gives insights into the effect of NHL fights. My goals for this project is to have a portion showing the most influential fights in the NHL.</p>
-<p>Currently, most of my time has been dedicated to pulling the data together. So far the datasources I have pulled have been coming from two sources. The first, is the SportsRadar NHL API. Using the API, I was able to take game ID’s for the every game of the 2025-2026 NHL season up until the olympic break. Using those ID’s, I placed them in a list, and then called the play-by-play data for each game, compiling it into a single dataframe. This was the largest piece of the data collection and the most important because the play by play data is the only place to find where fights happened. Other pieces from the API include player and team data, which I will use to pull in player and team stats to add to the dashboard.</p>
-<p>The second source I am using was gathered by some webscraping of the website hockeyfights.com. This website has a comprehensive list of every fight in the NHL, and I was able to pull the data for every fight, along with public poles of who the fans think won the fight.</p>
-<p>Now that I have majority of the data I will need, I have been in the process of cleansing and compiling all the data together. I have made a few seperate dataframes for different visualizations that will be included in the dashboard.</p>
-<p>#Visualization 1</p>
-<p>The first visualization I am made is to look at the chronological progression of each fight and the influence it has on the game.</p>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="MINvsNAS grapg.png" class="img-fluid figure-img"></p>
-<figcaption>Minnesota vs Nashville</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="TBLvsFL graph.png" class="img-fluid figure-img"></p>
-<figcaption>Tampa Bay vs Florida</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<p>Now that I have the chart working, all that has to happen to change the teams is change the filters for the dataframe to search by home, away, and date. I am hoping to add a dropdown menu to the dashboard that will allow users to select the teams and date of the fight they want to see, and this will auto update the graph.</p>
-<p>The dates have been a bit of a struggle to wrangle, and so has been the process of picking out who is the home team fighter and away team fighter. This will be important when looking at the influence of the fight as well as looking at who is the most successful fighter. Once this is taken care of, I will be making a data frame that will count the number of goals scored before the fight, and the number of goals scored after the fight, and then calculating the difference to see if there was a positive or negative influence on the game. Using this method I will be able to rank the top most influential fights in the NHL, and then use that to create a leaderboard of the most influential fighters in the NHL.</p>
-<p>Some other charts I have been able messing around with is a fight heat map to see where fights occur most frequently. That turned out to not have much correlation, but its a neat looking chart.</p>
-<p><img src="Hockey Fights Plot.png" class="img-fluid"></p>
+<p>This semester, I set out with the goal of looking into the effect of fights on a game in the National Hockey League. ALong with this deep dive, I wanted to create an interesting interactive dashboard that would allow users to explore fights that have happened throughout the NHL season. The time has finally come, and the dashboard is finished. The following will be a walk through of all the features included in the dashboard.</p>
+<section id="fight-explorer-page" class="level2">
+<h2 class="anchored" data-anchor-id="fight-explorer-page">Fight Explorer Page</h2>
+<p>The front page of the dashboard is the fight explorer page. This page allows users to select a fight that happened in the NHL season, and then see the influence of that fight on the game.</p>
+<p>!(Dashboard_Front.png)</p>
+<p>On the front page, you have 3 options of selecting a fight. The first options, is you can select one of the top 5 most influential fights of the season. The influence level is determined by a variable called <code>goals_delta</code> which looks at the goals scored within 10 minutes before the fight, and then looks at the goals scored within 10 minutes after the fight, and then calculates the difference. If there were more goals scored after the fight, then the influence level is positive, and if there were more goals scored before the fight, then the influence level is negative. The second option is the random button, which upon pressing will load a random fight from the season. Last, if there is a specific fight you have in mind, or want to filter by team, there are drop down filters you may choose from.</p>
+<p>Now, what will you see when you select a fight? The main feature of the fight explorer page is the influence graph. This graph shows the progression of the game, and how the fight influenced the game. The graph shows the full timeline of goals scored in the game. The vertical red line represents the time of the fight. You will also get player profiles for the two players, as well as a declared winner of the fight, a map of where the fight took place, and a video if you want to watch the fight.</p>
+<p>!(dashboard.png)</p>
+</section>
+<section id="fight-statistics-page" class="level2">
+<h2 class="anchored" data-anchor-id="fight-statistics-page">Fight Statistics Page</h2>
+<p>This page is a more traditional statistics page, looking at fights across the league as a whole, and taking a look and some individual players and positions in fights. We can see charts such as most fight prone teams, top fighters by win percentage, when fights happen most often, and a “bruiser” for each NHL team.</p>
+<p>!(fight stats.png)</p>
+</section>
+<section id="most-dominant-fights-page" class="level2">
+<h2 class="anchored" data-anchor-id="most-dominant-fights-page">Most Dominant Fights Page</h2>
+<p>The final page of dashboard is a leaderboard of the most dominantly won fights of the season. The website that I scraped the fight winner data from had a public poll for who the fans thought won the fight, and I used that data to calculate a win percentage for each fighter. This page looks at the fighters with the highest win percentage, and then shows some information about those fights, such as the teams involved, the date of the fight. Most importantly, it provided a video of the fight, so you can quickly watch the 20 most dominantly won fights of the season.</p>
+<p>!(Dominant Fights.png)</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>That is the dashboard! I am really happy with how it turned out, and I think it is a really interesting way to explore the effect of fights on NHL games. There are some things I would like to add in the future, such as a page looking at the most influential fights of all time, not just this season. Overall, I had a lot of fun working on this project, and I hope you enjoy exploring the dashboard as much as I enjoyed creating it!</p>
 
 
 </section>
