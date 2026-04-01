@@ -2,9 +2,9 @@
 title: "The Hockey Analytics Dashboard"
 description: ""
 author: "Caleb Peterson"
-date: "2026-02-18"
-categories: []
-draft: false
+date: "2026-04-01"
+categories: [Hockey Analysis]
+image: "dashboard.png"
 ---
 
 This semester, I set out with the goal of looking into the effect of fights on a game in the National Hockey League. ALong with this deep dive, I wanted to create an interesting interactive dashboard that would allow users to explore fights that have happened throughout the NHL season. The time has finally come, and the dashboard is finished. The following will be a walk through of all the features included in the dashboard.
