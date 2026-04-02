@@ -2,7 +2,7 @@
 title: "Hockey Cleansing"
 author: "Caleb Peterson"
 date: "2026-03-04"
-categories: [Hockey analysis]
+categories: [Hockey Analysis]
 image: "USAvsCANADA.avif"
 ---
 
