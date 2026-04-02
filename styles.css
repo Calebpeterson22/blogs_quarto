@@ -1,1 +1,65 @@
 /* css styles */
+/* ── Background ── */
+body {
+  background-color: #0a1628;
+  color: #e8edf2;
+}
+
+/* ── Navbar ── */
+header, nav, .site-header {
+  background-color: #0d2137;
+  border-bottom: 2px solid #1a9e9e;
+}
+
+.site-title, nav a {
+  color: #1a9e9e !important;
+}
+
+/* ── Post titles ── */
+h1, h2, h3 {
+  color: #e8edf2;
+}
+
+h2 a, .post-title a {
+  color: #e8edf2;
+  text-decoration: none;
+}
+
+h2 a:hover, .post-title a:hover {
+  color: #1a9e9e;
+}
+
+/* ── Category tags ── */
+.tag, .category, a[href*="category"], a[href*="tag"] {
+  background-color: #1a9e9e;
+  color: #0a1628 !important;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* ── Post cards/rows ── */
+.post, .post-entry, article {
+  border-bottom: 1px solid #1a3a4a;
+}
+
+/* ── Sidebar ── */
+.sidebar, aside {
+  background-color: #0d2137;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.sidebar a, aside a {
+  color: #1a9e9e;
+}
+
+/* ── General links ── */
+a {
+  color: #1a9e9e;
+}
+
+a:hover {
+  color: #22c5c5;
+}
