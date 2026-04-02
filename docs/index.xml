@@ -25,20 +25,20 @@
 <section id="fight-explorer-page" class="level2">
 <h2 class="anchored" data-anchor-id="fight-explorer-page">Fight Explorer Page</h2>
 <p>The front page of the dashboard is the fight explorer page. This page allows users to select a fight that happened in the NHL season, and then see the influence of that fight on the game.</p>
-<p>!(Dashboard_Front.png)</p>
+<p><img src="https://your-website-url.example.com/posts/Dashboard_creation/Dashboard_Front.png" class="img-fluid"></p>
 <p>On the front page, you have 3 options of selecting a fight. The first options, is you can select one of the top 5 most influential fights of the season. The influence level is determined by a variable called <code>goals_delta</code> which looks at the goals scored within 10 minutes before the fight, and then looks at the goals scored within 10 minutes after the fight, and then calculates the difference. If there were more goals scored after the fight, then the influence level is positive, and if there were more goals scored before the fight, then the influence level is negative. The second option is the random button, which upon pressing will load a random fight from the season. Last, if there is a specific fight you have in mind, or want to filter by team, there are drop down filters you may choose from.</p>
 <p>Now, what will you see when you select a fight? The main feature of the fight explorer page is the influence graph. This graph shows the progression of the game, and how the fight influenced the game. The graph shows the full timeline of goals scored in the game. The vertical red line represents the time of the fight. You will also get player profiles for the two players, as well as a declared winner of the fight, a map of where the fight took place, and a video if you want to watch the fight.</p>
-<p>!(dashboard.png)</p>
+<p><img src="https://your-website-url.example.com/posts/Dashboard_creation/dashboard.png" class="img-fluid"></p>
 </section>
 <section id="fight-statistics-page" class="level2">
 <h2 class="anchored" data-anchor-id="fight-statistics-page">Fight Statistics Page</h2>
 <p>This page is a more traditional statistics page, looking at fights across the league as a whole, and taking a look and some individual players and positions in fights. We can see charts such as most fight prone teams, top fighters by win percentage, when fights happen most often, and a “bruiser” for each NHL team.</p>
-<p>!(fight stats.png)</p>
+<p><img src="https://your-website-url.example.com/posts/Dashboard_creation/fight stats.png" class="img-fluid"></p>
 </section>
 <section id="most-dominant-fights-page" class="level2">
 <h2 class="anchored" data-anchor-id="most-dominant-fights-page">Most Dominant Fights Page</h2>
 <p>The final page of dashboard is a leaderboard of the most dominantly won fights of the season. The website that I scraped the fight winner data from had a public poll for who the fans thought won the fight, and I used that data to calculate a win percentage for each fighter. This page looks at the fighters with the highest win percentage, and then shows some information about those fights, such as the teams involved, the date of the fight. Most importantly, it provided a video of the fight, so you can quickly watch the 20 most dominantly won fights of the season.</p>
-<p>!(Dominant Fights.png)</p>
+<p><img src="https://your-website-url.example.com/posts/Dashboard_creation/Dominant Fights.png" class="img-fluid"></p>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
@@ -52,6 +52,70 @@
   <guid>https://your-website-url.example.com/posts/Dashboard_creation/</guid>
   <pubDate>Wed, 01 Apr 2026 06:00:00 GMT</pubDate>
   <media:content url="https://your-website-url.example.com/posts/Dashboard_creation/dashboard.png" medium="image" type="image/png" height="77" width="144"/>
+</item>
+<item>
+  <title>Hockey Fight Influence Statistical Test</title>
+  <dc:creator>Caleb Peterson</dc:creator>
+  <link>https://your-website-url.example.com/posts/Hockey Stats/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>The origin of my project came on February 1st, 2026. I was watching the Tampa Bay Lighting play the Boston Bruins. The Lighting were down 5-2 in the middel of the second period when a fight broke out between Andrei Vasilevskiy and Jeremy Swayman. Following the fight between the two goalies , the lightning scored 3 goals in regulation to tie the game, and eventually win it in overtime. I couldn’t help but think at the end of the game, was it the fight that sparked the comeback? Or was it just a coincidence that the fight happened right before the comeback?</p>
+<p>In a earlier blog post I talked about the data cleansing processes I went through to get the data ready for analysis. Once it was cleaned, I still had to make a few more features to be able to start testing. The 3 main features I created to measure this influence is <code>xg_delta</code>, <code>corsi_delta</code>, and <code>goals_delta</code>. The <code>xg_delta</code> looks at the expected goals scored within 10 minutes before the fight, and then looks at the expected goals scored within 10 minutes after the fight, and then calculates the difference. The <code>corsi_delta</code> does the same thing but with corsi instead of expected goals. Corsi is a popular advanced stat in hockey that looks at all shot attempts, including missed shots and blocked shots, to give a better picture of puck possession. Lastly, the <code>goals_delta</code> looks at the actual goals scored before and after the fight.</p>
+<p>Inside of these features, I also put in some ways to factor in dealing with when the fight takes place. A fight at the beginning of the game would have different impact from a fight at the end, so I added in “Per-60 Normalization”. Dividing by available seconds and multiplying by 3600 puts everything on a “per 60 minutes” scale so every fight window is comparable regardless of when in the game it happened. The before_seconds and after_seconds columns handle this, and you floor them at 1 second to avoid dividing by zero.</p>
+<p>Performing these tests in R, I created a linear regression model that looked added in factors such as is the fight at home or away for the winner or loser, what was the xg/corsi/goals before for the fighters team, and what period did the fight take place in. I ran this model separately for the winner and loser of the fight to see if there was a difference in influence for the winner vs the loser.</p>
+<p>Here are the results of each test.</p>
+<section id="winner-of-the-fight-xg_delta" class="level3">
+<h3 class="anchored" data-anchor-id="winner-of-the-fight-xg_delta">Winner of the fight ~ xg_delta</h3>
+<p><img src="https://your-website-url.example.com/posts/Hockey Stats/winner_xg.png" class="img-fluid"></p>
+</section>
+<section id="winner-of-the-fight-corsi_delta" class="level3">
+<h3 class="anchored" data-anchor-id="winner-of-the-fight-corsi_delta">Winner of the fight ~ corsi_delta</h3>
+<p><img src="https://your-website-url.example.com/posts/Hockey Stats/winner_corsi.png" class="img-fluid"></p>
+</section>
+<section id="winner-of-the-fight-goals_delta" class="level3">
+<h3 class="anchored" data-anchor-id="winner-of-the-fight-goals_delta">Winner of the fight ~ goals_delta</h3>
+<p><img src="https://your-website-url.example.com/posts/Hockey Stats/winner_goals.png" class="img-fluid"></p>
+</section>
+<section id="loser-of-the-fight-xg_delta" class="level3">
+<h3 class="anchored" data-anchor-id="loser-of-the-fight-xg_delta">Loser of the fight ~ xg_delta</h3>
+<p><img src="https://your-website-url.example.com/posts/Hockey Stats/loser_xg.png" class="img-fluid"></p>
+</section>
+<section id="loser-of-the-fight-corsi_delta" class="level3">
+<h3 class="anchored" data-anchor-id="loser-of-the-fight-corsi_delta">Loser of the fight ~ corsi_delta</h3>
+<p><img src="https://your-website-url.example.com/posts/Hockey Stats/loser_corsi.png" class="img-fluid"></p>
+</section>
+<section id="loser-of-the-fight-goals_delta" class="level3">
+<h3 class="anchored" data-anchor-id="loser-of-the-fight-goals_delta">Loser of the fight ~ goals_delta</h3>
+<p><img src="https://your-website-url.example.com/posts/Hockey Stats/loser_goals.png" class="img-fluid"></p>
+</section>
+<section id="conclusion-1" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-1">Conclusion 1</h2>
+<p>The main thing we see over all 6 models is the fact that the reigning factor is the _before variable. There is distinct regression towards the mean for both teams inn every statistical category. But something we can see is an general offensive pick up from both teams, regardless of winning or losing. To be sure of this, I recombined the data to include both winners and losers. The results of those tests were quite significant.</p>
+<section id="overall-game-xg_delta" class="level3">
+<h3 class="anchored" data-anchor-id="overall-game-xg_delta">Overall Game ~ xg_delta</h3>
+<p><img src="https://your-website-url.example.com/posts/Hockey Stats/Combined_xg.png" class="img-fluid"></p>
+</section>
+<section id="overall-game-corsi_delta" class="level3">
+<h3 class="anchored" data-anchor-id="overall-game-corsi_delta">Overall Game ~ corsi_delta</h3>
+<p><img src="https://your-website-url.example.com/posts/Hockey Stats/Combined_corsi.png" class="img-fluid"> ### Overall Game ~ goals_delta <img src="https://your-website-url.example.com/posts/Hockey Stats/Combined_goals.png" class="img-fluid"></p>
+<p>Controlling for how both teams were already playing and what period the fight happened in:</p>
+<p>xG: Combined expected goals rate goes up 8.2 per 60 after a fight Corsi: Combined shot attempts go up 72 per 60 after a fight Goals: Combined goal rate goes up 5.8 per 60 after a fight</p>
+<p>All three are highly significant (p &lt; 0.001). Fights systematically increase the offensive pace of the game for both teams combined, regardless of who won, what period it was, or how the game was already going.</p>
+<p>So boys, drop the gloves, and lets get the rink rocking!</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Hockey Analysis</category>
+  <guid>https://your-website-url.example.com/posts/Hockey Stats/</guid>
+  <pubDate>Wed, 01 Apr 2026 06:00:00 GMT</pubDate>
+  <media:content url="https://your-website-url.example.com/posts/Hockey Stats/hockey_fight_lol.gif" medium="image" type="image/gif"/>
 </item>
 <item>
   <title>Hockey Cleansing</title>
@@ -118,93 +182,6 @@
   <guid>https://your-website-url.example.com/posts/Hockey Cleansing/</guid>
   <pubDate>Wed, 04 Mar 2026 07:00:00 GMT</pubDate>
   <media:content url="https://your-website-url.example.com/posts/Hockey Cleansing/USAvsCANADA.avif" medium="image" type="image/avif"/>
-</item>
-<item>
-  <title>Test Marimo Post</title>
-  <dc:creator>J. Hathaway</dc:creator>
-  <link>https://your-website-url.example.com/posts/test_post/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="explore-a-marimo-based-post" class="level2">
-<h2 class="anchored" data-anchor-id="explore-a-marimo-based-post">Explore a marimo based post</h2>
-<p>This repository provides a framework for integrating <a href="https://quarto.org"></a> with <a href="https://marimo.io"></a>, enabling markdown documents to be executed in a environment, and reactive in page.</p>
-<marimo-island data-app-id="main" data-cell-id="Hbol" data-reactive="true">
-    <marimo-cell-output>
-    <span></span>
-    </marimo-cell-output>
-    <marimo-cell-code hidden="">import%20marimo%20as%20mo</marimo-cell-code>
-</marimo-island>
-<marimo-island data-app-id="main" data-cell-id="MJUe" data-reactive="true">
-    <marimo-cell-output>
-    <marimo-ui-element object-id="MJUe-0" random-id="d6e18b7b-34c8-8edb-b61b-3d70d62e3b38"><marimo-slider data-initial-value="1" data-label="null" data-start="1" data-stop="10" data-steps="[]" data-debounce="false" data-disabled="false" data-orientation="&quot;horizontal&quot;" data-show-value="false" data-include-input="false" data-full-width="false"></marimo-slider></marimo-ui-element>
-    </marimo-cell-output>
-    <marimo-cell-code hidden="">slider%20%3D%20mo.ui.slider(start%3D1%2C%20stop%3D10)%0Aslider</marimo-cell-code>
-</marimo-island>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">mo.md(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f'''</span></span>
-<span id="cb1-2"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">  # Hello from marimo!</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'!'</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> slider<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span>value<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb1-3"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">  This is a raw, reactive python cell.</span></span>
-<span id="cb1-4"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">  You can edit it, and the output will change on run.</span></span>
-<span id="cb1-5"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'''</span>).callout(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"info"</span>)</span></code></pre></div></div>
-<marimo-island data-app-id="main" data-cell-id="vblA" data-reactive="true">
-    <marimo-cell-output>
-    <marimo-callout-output data-html="&quot;<span class=\&quot;markdown prose dark:prose-invert contents\&quot;><h1 id=\&quot;hello-from-marimo\&quot;>Hello from marimo!!</h1>\n<span class=\&quot;paragraph\&quot;>This is a raw, reactive python cell.\nYou can edit it, and the output will change on run.</span></span>&quot;" data-kind="&quot;info&quot;"></marimo-callout-output>
-    </marimo-cell-output>
-    <marimo-ui-element object-id="694d016e-f8da-03cd-a323-af7678c1006a" random-id="694d016e-f8da-03cd-a323-af7678c1006a"><marimo-code-editor data-initial-value="&quot;mo.md(f'''\n  # Hello from marimo!{'!' * slider.value}\n  This is a raw, reactive python cell.\n  You can edit it, and the output will change on run.\n''').callout(\&quot;info\&quot;)&quot;" data-label="null" data-language="&quot;python&quot;" data-placeholder="&quot;&quot;" data-disabled="false" data-show-copy-button="true" data-debounce="false"></marimo-code-editor></marimo-ui-element>
-</marimo-island>
-
-
-</section>
-
- ]]></description>
-  <guid>https://your-website-url.example.com/posts/test_post/</guid>
-  <pubDate>Wed, 18 Feb 2026 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Welcome To My Blog</title>
-  <dc:creator>Tristan O&#39;Malley</dc:creator>
-  <link>https://your-website-url.example.com/posts/welcome/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This is the first post in a Quarto blog. Welcome!</p>
-<p><img src="https://your-website-url.example.com/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
-<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
-
-
-
- ]]></description>
-  <category>news</category>
-  <guid>https://your-website-url.example.com/posts/welcome/</guid>
-  <pubDate>Sun, 15 Feb 2026 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
