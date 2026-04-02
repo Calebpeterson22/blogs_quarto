@@ -24,7 +24,7 @@ Here are the results of each test.
 ![](winner_corsi.png)
 
 ### Winner of the fight ~ goals_delta
-![](winner_goals.png)
+![](winner_goal.png)
 
 ### Loser of the fight ~ xg_delta
 ![](loser_xg.png)
@@ -33,7 +33,7 @@ Here are the results of each test.
 ![](loser_corsi.png)
 
 ### Loser of the fight ~ goals_delta
-![](loser_goals.png)
+![](loser_goal.png)
 
 
 ## Conclusion 1
